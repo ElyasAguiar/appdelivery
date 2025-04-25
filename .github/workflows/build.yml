@@ -20,7 +20,8 @@ jobs:
           command: c
           cwd: "./"
           files: |
-            ./Backend/
+            Backend/
+            Backend/jwt-auth.lua
             captain-definition-api-gateway
           outPath: deploy.tar
 

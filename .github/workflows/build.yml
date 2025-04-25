@@ -20,7 +20,7 @@ jobs:
           command: c
           cwd: "./"
           files: |
-            Backend/
+            ./Backend/
             captain-definition-api-gateway
           outPath: deploy.tar
 

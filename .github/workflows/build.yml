@@ -23,6 +23,7 @@ jobs:
             Backend/
             Backend/jwt-auth.lua
             captain-definition-api-gateway
+            captain-definition-auth-api
           outPath: deploy.tar
 
       - name: Deploy App to CapRover

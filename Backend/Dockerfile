@@ -10,10 +10,10 @@ RUN curl -L https://github.com/SkyLothar/lua-resty-jwt/releases/download/v0.1.11
     && mv /tmp/lua-resty-jwt-0.1.11/lib/resty/* /usr/local/openresty/site/lualib/resty/
 
 # Copia o script Lua
-COPY jwt-auth.lua /etc/nginx/jwt-auth.lua
+COPY ./jwt-auth.lua /etc/nginx/jwt-auth.lua
 
 # Copia o seu arquivo de configuração Nginx
-COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY ./nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 
 ARG JWT_SECRET
 RUN sh -c 'echo "$(echo $JWT_SECRET)" > /etc/nginx/jwt-secret-file'

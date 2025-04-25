@@ -26,9 +26,16 @@ jobs:
             captain-definition-auth-api
           outPath: deploy.tar
 
-      - name: Deploy App to CapRover
+      - name: Deploy API-GATEWAY
         uses: caprover/deploy-from-github@v1.0.1
         with:
           server: "${{ secrets.CAPROVER_SERVER }}"
           app: "${{ secrets.APP_NAME }}"
           token: "${{ secrets.APP_TOKEN }}"
+
+      - name: Deploy AUTH-API
+        uses: caprover/deploy-from-github@v1.0.1
+        with:
+          server: "${{ secrets.CAPROVER_SERVER }}"
+          app: "${{ secrets.APP_NAME_AUTH_API }}"
+          token: "${{ secrets.APP_TOKEN_AUTH_API }}"

@@ -1,12 +1,16 @@
-name: Build & Deploy
-
+name: Build & Deploy Delivery
 on:
   push:
     branches: ["main"]
+    paths:
+      - 'Backend/delivery_api/**'
+      - captain-definition-delivery-api
 
   pull_request:
     branches: ["main"]
-
+    paths:
+      - 'Backend/delivery_api/**'
+      - captain-definition-delivery-api
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -22,20 +26,12 @@ jobs:
           files: |
             Backend/
             Backend/jwt-auth.lua
-            captain-definition-api-gateway
-            captain-definition-auth-api
+            captain-definition-delivery-api
           outPath: deploy.tar
 
-      - name: Deploy API-GATEWAY
+      - name: Deploy DELIVERY-API
         uses: caprover/deploy-from-github@v1.0.1
         with:
           server: "${{ secrets.CAPROVER_SERVER }}"
-          app: "${{ secrets.APP_NAME }}"
-          token: "${{ secrets.APP_TOKEN }}"
-
-      - name: Deploy AUTH-API
-        uses: caprover/deploy-from-github@v1.0.1
-        with:
-          server: "${{ secrets.CAPROVER_SERVER }}"
-          app: "${{ secrets.APP_NAME_AUTH_API }}"
-          token: "${{ secrets.APP_TOKEN_AUTH_API }}"
+          app: "${{ secrets.APP_NAME_DELIVERY_API }}"
+          token: "${{ secrets.APP_TOKEN_DELIVERY_API }}"

@@ -1,0 +1,38 @@
+name: Build & Deploy Auth
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - 'Backend/auth_api/**'
+      - captain-definition-auth-api
+
+  pull_request:
+    paths:
+      - 'Backend/auth_api/**'
+      - captain-definition-auth-api
+    branches: ["main"]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout GitHub Actions
+        uses: actions/checkout@main
+
+      - uses: a7ul/tar-action@v1.1.0
+        with:
+          command: c
+          cwd: "./"
+          files: |
+            Backend/
+            Backend/jwt-auth.lua
+            captain-definition-auth-api
+          outPath: deploy.tar
+
+      - name: Deploy AUTH-API
+        uses: caprover/deploy-from-github@v1.0.1
+        with:
+          server: "${{ secrets.CAPROVER_SERVER }}"
+          app: "${{ secrets.APP_NAME_AUTH_API }}"
+          token: "${{ secrets.APP_TOKEN_AUTH_API }}"

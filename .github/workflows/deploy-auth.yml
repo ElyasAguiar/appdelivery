@@ -8,10 +8,10 @@ on:
       - captain-definition-auth-api
 
   pull_request:
-    branches: ["main"]
     paths:
       - 'Backend/auth_api/**'
       - captain-definition-auth-api
+    branches: ["main"]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

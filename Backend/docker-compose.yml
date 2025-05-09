@@ -22,7 +22,7 @@ services:
   auth-api:
     build:
       context: ./auth_api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.local
     container_name: auth-api
     env_file:
       - ./auth_api/.env
@@ -51,7 +51,7 @@ services:
   orders-api:
     build:
       context: ./orders_api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.local
     container_name: orders-api
     env_file:
       - ./orders_api/.env
@@ -102,7 +102,7 @@ services:
   delivery-api:
     build:
       context: ./delivery_api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.local
     container_name: delivery-api
     env_file:
       - ./delivery_api/.env
